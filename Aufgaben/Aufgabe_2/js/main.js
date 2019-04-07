@@ -71,69 +71,73 @@ let kreuz10 = {
     symbol: "Kreuz",
 };
 let karoB = {
-    zahl: "B",
+    zahl: "Bube",
     symbol: "Karo",
 };
 let herzB = {
-    zahl: "B",
+    zahl: "Bube",
     symbol: "Herz",
 };
 let pikB = {
-    zahl: "B",
+    zahl: "Bube",
     symbol: "Pik",
 };
 let kreuzB = {
-    zahl: "B",
+    zahl: "Bube",
     symbol: "Kreuz",
 };
 let karoD = {
-    zahl: "D",
+    zahl: "Dame",
     symbol: "Karo",
 };
 let herzD = {
-    zahl: "D",
+    zahl: "Dame",
     symbol: "Herz",
 };
 let pikD = {
-    zahl: "D",
+    zahl: "Dame",
     symbol: "Pik",
 };
 let kreuzD = {
-    zahl: "D",
+    zahl: "Dame",
     symbol: "Kreuz",
 };
 let karoK = {
-    zahl: "K",
+    zahl: "König",
     symbol: "Karo",
 };
 let herzK = {
-    zahl: "K",
+    zahl: "König",
     symbol: "Herz",
 };
 let pikK = {
-    zahl: "K",
+    zahl: "König",
     symbol: "Pik",
 };
 let kreuzK = {
-    zahl: "K",
+    zahl: "König",
     symbol: "Kreuz",
 };
 let karoA = {
-    zahl: "A",
+    zahl: "Ass",
     symbol: "Karo",
 };
 let herzA = {
-    zahl: "A",
+    zahl: "Ass",
     symbol: "Herz",
 };
 let pikA = {
-    zahl: "A",
+    zahl: "Ass",
     symbol: "Pik",
 };
 let kreuzA = {
-    zahl: "A",
+    zahl: "Ass",
     symbol: "Kreuz",
 };
+let alleKarten = [karo7, herz7, pik7, kreuz7, karo8, herz8, pik8, kreuz8, karo9, herz9, pik9, kreuz9, karo10, herz10, pik10, kreuz10, karoB, herzB, pikB, kreuzB, karoD, herzD, pikD, kreuzD, karoK, herzK, pikK, kreuzK, karoA, herzA, pikA, kreuzA,];
+let aufnahme = [];
+let ablage = [];
+let hand = [];
 function Box() {
     var anzahlHandkarten = prompt("Mit wie vielen Karten möchtest du spielen?");
     var node = document.getElementById("frage");
