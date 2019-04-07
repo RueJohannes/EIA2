@@ -8,7 +8,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 function Box() {
     var Name = prompt("Kannst du mir deinen Namen verraten?");
-    var node = document.getElementById("frage");
+    var node = document.getElementById("zahl");
     node.innerHTML += "Hallo ";
     node.innerHTML += Name;
     node.innerHTML += ", wie geht es dir?";
