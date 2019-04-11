@@ -146,8 +146,27 @@ let aufnahme: Karten [] = [];
 let ablage: Karten [] = [];
 let hand: Karten [] = [];
 
-function Box() {
-    var anzahlHandkarten=prompt("Mit wie vielen Karten möchtest du spielen?");
-    var node: HTMLElement=document.getElementById("frage");
+function box() {
+    let anzahlHandkarten: string = prompt("Mit wie vielen Karten möchtest du spielen?");
+    let mengeHandkarten: number = Number(anzahlHandkarten);
+    if (mengeHandkarten>0 && mengeHandkarten<33) {
+        handkartenZufälligZiehen(mengeHandkarten);
+    }
+    else {
+        console.log("Kartenanzahl nicht möglich")
+    }
 } 
-document.addEventListener("DOMContentLoaded", Box)
+document.addEventListener("DOMContentLoaded", box)
+//Die Funktion Box wird ausfeführt, wenn DOM geladen ist
+
+function handkartenZufälligZiehen(_mengeHandkarten:number) {
+    // _ steht für Parameter. Parameter sind mitgegebene Werte aus anderen Funktionen
+    let kartenInHtml: string = "";
+    for (let i: number = 0; i < _mengeHandkarten; i++) {
+        let zufall: number = Math.floor(Math.random() *alleKarten.length);
+        hand.push(alleKarten[zufall]);
+        alleKarten.splice(zufall, 1);        
+        kartenInHtml += `<div class="${hand[i].symbol}"> ${hand[i].symbol} ${hand[i].zahl}</div>`
+    }
+    document.getElementById("cardBox 1").innerHTML = kartenInHtml;
+}

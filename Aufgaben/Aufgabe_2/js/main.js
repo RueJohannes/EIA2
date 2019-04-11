@@ -2,7 +2,7 @@
 Aufgabe: Aufgabe 0
 Name: Johannes Rümenapp
 Matrikel: 261175
-Datum: 22.03.2019
+Datum: 04.04.2019
 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -138,9 +138,27 @@ let alleKarten = [karo7, herz7, pik7, kreuz7, karo8, herz8, pik8, kreuz8, karo9,
 let aufnahme = [];
 let ablage = [];
 let hand = [];
-function Box() {
-    var anzahlHandkarten = prompt("Mit wie vielen Karten möchtest du spielen?");
-    var node = document.getElementById("frage");
+function box() {
+    let anzahlHandkarten = prompt("Mit wie vielen Karten möchtest du spielen?");
+    let mengeHandkarten = Number(anzahlHandkarten);
+    if (mengeHandkarten > 0 && mengeHandkarten < 33) {
+        handkartenZufälligZiehen(mengeHandkarten);
+    }
+    else {
+        console.log("Kartenanzahl nicht möglich");
+    }
 }
-document.addEventListener("DOMContentLoaded", Box);
+document.addEventListener("DOMContentLoaded", box);
+//Die Funktion Box wird ausfeführt, wenn DOM geladen ist
+function handkartenZufälligZiehen(_mengeHandkarten) {
+    // _ steht für Parameter. Parameter sind mitgegebene Werte aus anderen Funktionen
+    let kartenInHtml = "";
+    for (let i = 0; i < _mengeHandkarten; i++) {
+        let zufall = Math.floor(Math.random() * alleKarten.length);
+        hand.push(alleKarten[zufall]);
+        alleKarten.splice(zufall, 1);
+        kartenInHtml += `<div class="${hand[i].symbol}"> ${hand[i].symbol} ${hand[i].zahl}</div>`;
+    }
+    document.getElementById("cardBox 1").innerHTML = kartenInHtml;
+}
 //# sourceMappingURL=main.js.map

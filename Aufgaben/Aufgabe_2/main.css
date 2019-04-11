@@ -3,7 +3,6 @@ html, body {
     font-size: 18px;
     font-family: Helvetica, sans-serif, Arial;
 }
-
 #desk {
     width: 1470px; 
     position: absolute;
@@ -61,4 +60,21 @@ html, body {
 #desk #cards_stack_old img:hover {
     scale: 3%;
     cursor: default;
+}
+
+.Karo {
+    border: solid #000000;
+    background: red;
+}
+.Herz  {
+    border: solid #000000;
+    background: lightcoral;
+}
+.Kreuz {
+    border: solid #000000;
+    background: gray;
+}
+.Pik {
+    border: solid #000000;
+    background: lightgray;
 }
