@@ -1,0 +1,80 @@
+html, body {
+    background-color: green;
+    font-size: 18px;
+    font-family: Helvetica, sans-serif, Arial;
+}
+#desk {
+    width: 1470px; 
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    right: 50%;
+    margin: 0 0 0 -735px;
+    border: solid 3px #fff;
+    border-radius: 20px;
+    height: 360px;
+}
+
+#card_stack_old, #card_stack_new, .text {
+    background: rgba(255, 255, 255, 0.4); 
+    cursor: default;
+}
+
+#desk .text {
+    width: 164px;
+    height: 2px;
+    padding: 10px 10px 27px 10px;
+    float: left;
+    border-radius: 10px;
+    border: solid 3px #fff;
+    margin: 10px 10px 0px 10px;
+    text-align: center;
+}
+
+#desk .cards {
+    width: 164px;
+    height: 260px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 3px #fff;
+    float: left;
+    position: relative;
+}
+
+#desk .cards img {
+    transition: all 400ms;
+    position: absolute;
+    top: 4%;
+    left: 5%;
+    bottom: 5%;
+    right: 5%;
+    width: 90%;
+    cursor: pointer;
+}
+
+#desk .cards img:hover {
+    scale: 3%;
+}
+
+#desk #cards_stack_old img:hover {
+    scale: 3%;
+    cursor: default;
+}
+
+.Karo {
+    border: solid #000000;
+    background: red;
+}
+.Herz  {
+    border: solid #000000;
+    background: lightcoral;
+}
+.Kreuz {
+    border: solid #000000;
+    background: gray;
+}
+.Pik {
+    border: solid #000000;
+    background: lightgray;
+}
