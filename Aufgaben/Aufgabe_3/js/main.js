@@ -12,162 +12,162 @@ var A3;
     let karo7 = {
         zahl: "7",
         symbol: "Karo",
-        id: 2,
+        id: 1,
     };
     let herz7 = {
         zahl: "7",
         symbol: "Herz",
-        id: 3,
+        id: 2,
     };
     let pik7 = {
         zahl: "7",
         symbol: "Pik",
-        id: 4,
+        id: 3,
     };
     let kreuz7 = {
         zahl: "7",
         symbol: "Kreuz",
-        id: 5,
+        id: 4,
     };
     let karo8 = {
         zahl: "8",
         symbol: "Karo",
-        id: 6,
+        id: 5,
     };
     let herz8 = {
         zahl: "8",
         symbol: "Herz",
-        id: 7,
+        id: 6,
     };
     let pik8 = {
         zahl: "8",
         symbol: "Pik",
-        id: 8,
+        id: 7,
     };
     let kreuz8 = {
         zahl: "8",
         symbol: "Kreuz",
-        id: 9,
+        id: 8,
     };
     let karo9 = {
         zahl: "9",
         symbol: "Karo",
-        id: 10,
+        id: 9,
     };
     let herz9 = {
         zahl: "9",
         symbol: "Herz",
-        id: 11,
+        id: 10,
     };
     let pik9 = {
         zahl: "9",
         symbol: "Pik",
-        id: 12,
+        id: 11,
     };
     let kreuz9 = {
         zahl: "9",
         symbol: "Kreuz",
-        id: 13,
+        id: 12,
     };
     let karo10 = {
         zahl: "10",
         symbol: "Karo",
-        id: 14,
+        id: 13,
     };
     let herz10 = {
         zahl: "10",
         symbol: "Herz",
-        id: 15,
+        id: 14,
     };
     let pik10 = {
         zahl: "10",
         symbol: "Pik",
-        id: 16,
+        id: 15,
     };
     let kreuz10 = {
         zahl: "10",
         symbol: "Kreuz",
-        id: 17,
+        id: 16,
     };
     let karoB = {
         zahl: "Bube",
         symbol: "Karo",
-        id: 18,
+        id: 17,
     };
     let herzB = {
         zahl: "Bube",
         symbol: "Herz",
-        id: 19,
+        id: 18,
     };
     let pikB = {
         zahl: "Bube",
         symbol: "Pik",
-        id: 20,
+        id: 19,
     };
     let kreuzB = {
         zahl: "Bube",
         symbol: "Kreuz",
-        id: 21,
+        id: 20,
     };
     let karoD = {
         zahl: "Dame",
         symbol: "Karo",
-        id: 22,
+        id: 21,
     };
     let herzD = {
         zahl: "Dame",
         symbol: "Herz",
-        id: 23,
+        id: 22,
     };
     let pikD = {
         zahl: "Dame",
         symbol: "Pik",
-        id: 24,
+        id: 23,
     };
     let kreuzD = {
         zahl: "Dame",
         symbol: "Kreuz",
-        id: 25,
+        id: 24,
     };
     let karoK = {
         zahl: "König",
         symbol: "Karo",
-        id: 26,
+        id: 25,
     };
     let herzK = {
         zahl: "König",
         symbol: "Herz",
-        id: 27,
+        id: 26,
     };
     let pikK = {
         zahl: "König",
         symbol: "Pik",
-        id: 28,
+        id: 27,
     };
     let kreuzK = {
         zahl: "König",
         symbol: "Kreuz",
-        id: 29,
+        id: 28,
     };
     let karoA = {
         zahl: "Ass",
         symbol: "Karo",
-        id: 30,
+        id: 29,
     };
     let herzA = {
         zahl: "Ass",
         symbol: "Herz",
-        id: 31,
+        id: 30,
     };
     let pikA = {
         zahl: "Ass",
         symbol: "Pik",
-        id: 32,
+        id: 31,
     };
     let kreuzA = {
         zahl: "Ass",
         symbol: "Kreuz",
-        id: 33,
+        id: 32,
     };
     let alleKarten = [karo7, herz7, pik7, kreuz7, karo8, herz8, pik8, kreuz8, karo9, herz9, pik9, kreuz9, karo10, herz10, pik10, kreuz10, karoB, herzB, pikB, kreuzB, karoD, herzD, pikD, kreuzD, karoK, herzK, pikK, kreuzK, karoA, herzA, pikA, kreuzA,];
     let aufnahme = [];
@@ -210,31 +210,33 @@ var A3;
     }
     function handkartenAnzeigen() {
         let kartenInHtml = "";
+        for (let i = 0; i < hand.length; i++)
+            kartenInHtml += `<div class="${hand[i].symbol}" id="${hand[i].id}"> ${hand[i].symbol} ${hand[i].zahl} </div>`;
+        document.getElementById("cardBox 1").innerHTML = kartenInHtml;
         for (let i = 0; i < hand.length; i++) {
-            kartenInHtml += `<div class="${hand[i].symbol}"> ${hand[i].symbol} ${hand[i].zahl}</div>`;
-            document.getElementById("cardBox 1").innerHTML = kartenInHtml;
-            if (ablage.length > 0) {
-                let handkarteAbgelegt = `<div class="${ablage[ablage.length - 1].symbol}"> ${ablage[ablage.length - 1].symbol} ${ablage[ablage.length - 1].zahl} </div> `;
-                document.getElementById("card_stack_old").innerHTML = handkarteAbgelegt;
+            document.getElementById(hand[i].id.toString()).addEventListener("click", handkartenAblegen);
+        }
+        if (ablage.length > 0) {
+            let abgelegt = `<div class="${ablage[ablage.length - 1].symbol}" id="${ablage[ablage.length - 1].id}"> ${ablage[ablage.length - 1].symbol} ${ablage[ablage.length - 1].zahl} </div>`;
+            document.getElementById("card_stack_old").innerHTML = abgelegt;
+        }
+    }
+    function handkartenAblegen(_event) {
+        let handkarteAuswahl = _event.target;
+        console.log(handkarteAuswahl);
+        for (let i = 0; i < hand.length; i++) {
+            if (hand[i].id == Number(handkarteAuswahl.id)) {
+                ablage.push(hand[i]);
+                hand.splice(i, 1);
+                handkartenAnzeigen();
             }
         }
-        function handkartenAblegen(_event) {
-            let handkarteAuswahl = _event.target;
-            console.log(handkarteAuswahl);
-            for (let i = 0; i < hand.length; i++) {
-                if (hand[i].id == Number(handkarteAuswahl.id)) {
-                    ablage.push(hand[i]);
-                    hand.splice(i, 1);
-                    handkartenAnzeigen();
-                }
-            }
-        }
-        function handSortieren() {
-            hand.sort(function (a, b) {
-                return a.id - b.id;
-            });
-            handkartenAnzeigen();
-        }
+    }
+    function handSortieren() {
+        hand.sort(function (a, b) {
+            return a.id - b.id;
+        });
+        handkartenAnzeigen();
     }
 })(A3 || (A3 = {}));
 //# sourceMappingURL=main.js.map
