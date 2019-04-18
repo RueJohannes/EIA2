@@ -203,8 +203,12 @@ namespace A3 {
         let kartenInHtml: string = "";
         for (let i: number = 0; i < _mengeHandkarten; i++) {
             let zufall: number = Math.floor(Math.random() *alleKarten.length);
-            hand.push(alleKarten[zufall]);
-            alleKarten.splice(zufall, 1);
+            if(alleKarten.length != 0) {
+                hand.push(alleKarten[zufall]);
+                alleKarten.splice(zufall, 1); 
+            } else {
+                console.log("Ziehstapel leer!");
+            }
             handkartenAnzeigen();
         }
     }

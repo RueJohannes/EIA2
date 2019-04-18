@@ -193,8 +193,13 @@ var A3;
         let kartenInHtml = "";
         for (let i = 0; i < _mengeHandkarten; i++) {
             let zufall = Math.floor(Math.random() * alleKarten.length);
-            hand.push(alleKarten[zufall]);
-            alleKarten.splice(zufall, 1);
+            if (alleKarten.length != 0) {
+                hand.push(alleKarten[zufall]);
+                alleKarten.splice(zufall, 1);
+            }
+            else {
+                console.log("Ziehstapel leer!");
+            }
             handkartenAnzeigen();
         }
     }
