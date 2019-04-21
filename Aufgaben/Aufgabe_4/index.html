@@ -1,49 +1,113 @@
+<!--
+Aufgabe: Aufgabe 4
+Name: Johannes Rümenapp
+Matrikel: 261175
+Datum: 20.04.2019
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+-->
+
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EIS FuWa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>EIS FuWa</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="main.css">
 </head>
+
 <body>
-	<fieldset id="radioDarreichungsform">
-		<legend> Darreichungsform </legend>
-		<input type="radio" name="Radiogroup" value="radio1" id="radio1" />
-		<label for="radio1">Waffel</label>
-		<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
-		<label for="radio2">Becher</label>
-	</fieldset>
-	<fieldset id="radioKugelgröße">
-		<legend> Kugelgröße </legend>
-		<input type="radio" name="Radiogroup2" value="radio1" id="radio1" />
-		<label for="radio1">klein</label>
-		<input type="radio" name="Radiogroup2" value="radio2" id="radio2"/>
-		<label for="radio2">groß</label>
-	</fieldset>
-	<fieldset id="checkboxSorte">
-		<legend> Sorte </legend>
-		<input type="checkbox" name="Checkbox1" value="check1" id="check1"/>
-		<label for="check1">Erdbeere</label>
-		<input type="checkbox" name="Checkbox2" value="check2" id="check2"/>
-		<label for="check2">Schokolade</label>
-		<input type="checkbox" name="Checkbox3" value="check3" id="check3"/>
-		<label for="check3">Vanille</label>
-		<input type="checkbox" name="Checkbox4" value="check4" id="check4"/>
-		<label for="check4">Cookie</label>
-		<input type="checkbox" name="Checkbox5" value="check5" id="check5"/>
-		<label for="check5">Stracciatella</label>
-		<input type="checkbox" name="Checkbox6" value="check6" id="check6"/>
-		<label for="check6">Mango</label>
-		<input type="checkbox" name="Checkbox7" value="check7" id="check7"/>
-		<label for="check7">Maracuja</label>
-		<input type="checkbox" name="Checkbox8" value="check8" id="check8"/>
-		<label for="check8">Latte Macchiato</label>
-		<input type="checkbox" name="Checkbox9" value="check9" id="check9"/>
-		<label for="check9">Joghurt</label>
-		<input type="checkbox" name="Checkbox10" value="check10" id="check10"/>
-		<label for="check10">Haselnuss</label>
-	</fieldset>
+
+	<div>
+		<h1>
+			Online Eiskonfigurator
+		</h1>
+	</div>
+	<br>
+
+	<div id="konfigurator">
+		<h3>Konfigurator</h3>
+	</div>
+	<div>
+		<fieldset id="radioDarreichungsform">
+			<legend> Darreichungsform </legend>
+			<input type="radio" name="Radiogroup1" value="radio1" id="radio1" checked>
+			<label for="radio1">Waffel</label> <br>
+			<input type="radio" name="Radiogroup1" value="radio2" id="radio2" checked>
+			<label for="radio2">Becher</label> <br>
+		</fieldset>
+
+		<fieldset id="radioKugelgröße">
+			<legend> Kugelgröße </legend>
+			<input type="radio" name="Radiogroup2" value="radio3" id="radio3" checked>
+			<label for="radio3">klein</label> <br>
+			<input type="radio" name="Radiogroup2" value="radio4" id="radio4" checked>
+			<label for="radio4">groß</label> <br>
+		</fieldset>
+
+		<fieldset id="stepperSorte">
+			<legend> Sorte </legend>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Cookie <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Erdbeere <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Haselnuss <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Joghurt <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Latte Macchiato <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Mango <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Maracuja <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Schokolade <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Stracciatella <br>
+			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Vanille <br>
+		</fieldset>
+
+		<fieldset id="checkboxZusätze">
+			<legend> Zusätze </legend>
+			<input type="checkbox" name="Checkbox1" value="check1" id="check1" />
+			<label for="check1">Sahne</label> <br>
+			<input type="checkbox" name="Checkbox2" value="check2" id="check2" />
+			<label for="check2">Erdbeersoße</label> <br>
+			<input type="checkbox" name="Checkbox3" value="check3" id="check3" />
+			<label for="check3">Schokosoße</label> <br>
+			<input type="checkbox" name="Checkbox4" value="check4" id="check4" />
+			<label for="check4">Sträusel</label> <br>
+		</fieldset>
+	</div>
+
+	<div id="zusammenfassung">
+		<h3>Zusammenfassung</h3>
+	</div>
+	<div>
+		<span id="zusammenfassungDarreichungsform">Darreichungsform</span>
+		<span id="zusammenfassungKugelgröße">Kugelgröße</span>
+		<span id="zusammenfassungSorte">Sorte</span>
+		<span id="zusammenfassungZusätze">Zusätze</span>
+	</div>
+
+	<div id="lieferadresse">
+		<h3>Lieferadresse</h3>
+	</div>
+	<div>
+		<fieldset id="textLieferadresse">
+			<legend> Lieferadresse </legend>
+			Vorname
+			<input type="text" name="Text" placeholder="type here" required />
+			Nachname
+			<input type="text" name="Text" placeholder="type here" required /> <br>
+			Straße, Hausnummer
+			<input type="text" name="Text" placeholder="type here" required /> <br>
+			Postleitzahl
+			<input type="text" name="Pattern" pattern="[0-9]{5}" placeholder="use RegEx" />
+			Ort
+			<input type="text" name="Text" placeholder="type here" required /> <br>
+			E-Mail Adresse
+			<input type="email" name="Mail" placeholder="place @ between" />
+		</fieldset>
+	</div>
+
+	<div>
+		<button id="bestellübersicht">Bestellübersicht</button>
+	</div>
 </body>
+
 </html>
