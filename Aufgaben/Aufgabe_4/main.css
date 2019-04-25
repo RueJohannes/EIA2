@@ -8,12 +8,17 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 
 html {
-    font-family: Helvetica, sans-serif;
-    background-color: rgb(0, 225, 255);
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #3B6EA5;
 }
 
 div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+#zusammenfassung {
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }

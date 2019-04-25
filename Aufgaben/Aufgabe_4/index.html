@@ -33,62 +33,72 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 	<div>
 		<fieldset id="radioDarreichungsform">
 			<legend> Darreichungsform </legend>
-			<input type="radio" name="Radiogroup1" value="radio1" id="radio1" checked>
+			<input type="radio" name="Radiogroup1" value="radio1" id="Waffel" checked>
 			<label for="radio1">Waffel</label> <br>
-			<input type="radio" name="Radiogroup1" value="radio2" id="radio2" checked>
+			<input type="radio" name="Radiogroup1" value="radio2" id="Becher" checked>
 			<label for="radio2">Becher</label> <br>
 		</fieldset>
 
-		<fieldset id="radioKugelgröße">
+		<fieldset id="radioKugelgroesse">
 			<legend> Kugelgröße </legend>
-			<input type="radio" name="Radiogroup2" value="radio3" id="radio3" checked>
+			<input type="radio" name="Radiogroup2" value="radio3" id="klein" checked>
 			<label for="radio3">klein</label> <br>
-			<input type="radio" name="Radiogroup2" value="radio4" id="radio4" checked>
+			<input type="radio" name="Radiogroup2" value="radio4" id="groß" checked>
 			<label for="radio4">groß</label> <br>
 		</fieldset>
 
 		<fieldset id="stepperSorte">
 			<legend> Sorte </legend>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Cookie <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Erdbeere <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Haselnuss <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Joghurt <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Latte Macchiato <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Mango <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Maracuja <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Schokolade <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Stracciatella <br>
-			<input type="number" name="Stepper" step="1" min="0" max="5" value="0" /> Vanille <br>
+			<input type="number" name="StepperCookie" step="1" min="0" max="5" value="0" /> Cookie <br>
+			<input type="number" name="StepperErdbeere" step="1" min="0" max="5" value="0" /> Erdbeere <br>
+			<input type="number" name="StepperHaselnuss" step="1" min="0" max="5" value="0" /> Haselnuss <br>
+			<input type="number" name="StepperJoghurt" step="1" min="0" max="5" value="0" /> Joghurt <br>
+			<input type="number" name="StepperLatteMacchiato" step="1" min="0" max="5" value="0" /> Latte Macchiato <br>
+			<input type="number" name="StepperMango" step="1" min="0" max="5" value="0" /> Mango <br>
+			<input type="number" name="StepperMaracuja" step="1" min="0" max="5" value="0" /> Maracuja <br>
+			<input type="number" name="StepperSchokolade" step="1" min="0" max="5" value="0" /> Schokolade <br>
+			<input type="number" name="StepperStracciatella" step="1" min="0" max="5" value="0" /> Stracciatella <br>
+			<input type="number" name="StepperVanille" step="1" min="0" max="5" value="0" /> Vanille <br>
 		</fieldset>
 
 		<fieldset id="checkboxZusätze">
 			<legend> Zusätze </legend>
-			<input type="checkbox" name="Checkbox1" value="check1" id="check1" />
-			<label for="check1">Sahne</label> <br>
-			<input type="checkbox" name="Checkbox2" value="check2" id="check2" />
-			<label for="check2">Erdbeersoße</label> <br>
-			<input type="checkbox" name="Checkbox3" value="check3" id="check3" />
-			<label for="check3">Schokosoße</label> <br>
-			<input type="checkbox" name="Checkbox4" value="check4" id="check4" />
-			<label for="check4">Sträusel</label> <br>
+			<input type="checkbox" name="Checkbox1" value="check1" id="Sahne" />
+			<label for="Sahne">Sahne</label> <br>
+			<input type="checkbox" name="Checkbox2" value="check2" id="Erdbeersoße" />
+			<label for="Erdbeersoße">Erdbeersoße</label> <br>
+			<input type="checkbox" name="Checkbox3" value="check3" id="Schokosoße" />
+			<label for="Schokosoße">Schokosoße</label> <br>
+			<input type="checkbox" name="Checkbox4" value="check4" id="Sträusel" />
+			<label for="Sträusel">Sträusel</label> <br>
 		</fieldset>
 	</div>
 
-	<div id="zusammenfassung">
+	<div>
 		<h3>Zusammenfassung</h3>
 	</div>
-	<div>
-		<span id="zusammenfassungDarreichungsform">Darreichungsform</span>
-		<span id="zusammenfassungKugelgröße">Kugelgröße</span>
-		<span id="zusammenfassungSorte">Sorte</span>
-		<span id="zusammenfassungZusätze">Zusätze</span>
+	<div id="zusammenfassung">
+		<span id="zusammenfassungDarreichungsform"></span> <br>
+		<span id="zusammenfassungKugelgroesse"></span> <br>
+		<span id="zusammenfassungSorte"></span> <br>
+		<span id="zusammenfassungZusätze"></span> <br>
+		<span id="zusammenfassungVersandart"></span> <br>
+		<span id="zusammenfassungPreis"><strong>Preis: </strong></span>
 	</div>
 
-	<div id="lieferadresse">
-		<h3>Lieferadresse</h3>
+	<div>
+		<h3>Versand</h3>
 	</div>
 	<div>
-		<fieldset id="textLieferadresse">
+		<fieldset id="versandart">
+			<legend> Versandart </legend>
+			<input type="radio" name="Radiogroup3" value="radio5" id="Standardversand" checked>
+			<label for="radio5">Standardversand</label> <br>
+			<input type="radio" name="Radiogroup3" value="radio6" id="Expressversand" checked>
+			<label for="radio6">Expressversand</label> <br>
+		</fieldset>
+
+		<fieldset id="lieferadresse">
 			<legend> Lieferadresse </legend>
 			Vorname
 			<input type="text" name="Text" placeholder="type here" required />
@@ -108,6 +118,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 	<div>
 		<button id="bestellübersicht">Bestellübersicht</button>
 	</div>
+
+	
+    <script src="js/main.js"></script>
 </body>
 
 </html>

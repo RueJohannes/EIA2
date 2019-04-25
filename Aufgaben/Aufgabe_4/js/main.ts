@@ -8,97 +8,106 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 
 namespace A4 {
-
-    interface Konfiguration {
-        name: string;
-        id: number,
-    }
-    let sorteCookie: Konfiguration = {
-        name: "Cookie",
-        id: 1,
-    }
-    let sorteErdbeere: Konfiguration = {
-        name: "Erdbeere",
-        id: 2,
-    }
-    let sorteHaselnuss: Konfiguration = {
-        name: "Haselnuss7",
-        id: 3,
-    }
-    let sorteJoghurt: Konfiguration = {
-        name: "Joghurt",
-        id: 4,
-    }
-    let sorteLatteMacchiato: Konfiguration = {
-        name: "Latte Macchiato",
-        id: 5,
-    }
-    let sorteMango: Konfiguration = {
-        name: "Mango",
-        id: 6,
-    }
-    let sorteMaracuja: Konfiguration = {
-        name: "Maracuja",
-        id: 7,
-    }
-    let sorteSchokolade: Konfiguration = {
-        name: "Schokolade",
-        id: 8,
-    }
-    let sorteStracciatella: Konfiguration = {
-        name: "Stracciatella",
-        id: 9,
-    }
-    let sorteVanille: Konfiguration = {
-        name: "Vanille",
-        id: 10,
-    }
-    let zusatzSahne: Konfiguration = {
-        name: "Sahne",
-        id: 11,
-    }
-    let zusatzErdbeersosse: Konfiguration = {
-        name: "Erdbeersoße",
-        id: 12,
-    }
-    let zusatzSchokososse: Konfiguration = {
-        name: "Schokosoße",
-        id: 13,
-    }
-    let zusatzStrauusel: Konfiguration = {
-        name: "Sträusel",
-        id: 14,
-    }
-    
-    let Sorten: Konfiguration[] = [sorteCookie, sorteErdbeere, sorteHaselnuss, sorteJoghurt, sorteLatteMacchiato, sorteMango, sorteMaracuja, sorteSchokolade, sorteStracciatella, sorteVanille,];
-    let Zusätze: Konfiguration [] = [zusatzSahne, zusatzErdbeersosse, zusatzSchokososse, zusatzStrauusel,];
-    let Zusammenfassung: Konfiguration [] = [];
-
     window.addEventListener("load", init);
 
     function init(_event: Event): void {
         console.log("Init");
         let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-
         for (let i: number = 0; i < fieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = fieldsets[i];
+            console.log(fieldset)
             fieldset.addEventListener("change", handleChange);
+            document.getElementById("bestellübersicht").addEventListener("click", auftragUeberpruefen);
         }
     }
 
     function handleChange(_event: Event): void {
-        console.log(_event);
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        console.log("Changed " + target.name + " to " + target.value);
-        if (this.id == "checkbox")
-            console.log("Changed " + target.name + " to " + target.checked);
-        if (target.name == "Slider") {
-            let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("progress")[0];
-            progress.value = parseFloat(target.value);
+        let Felder: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+        let anzahl: number = 0;
+        let preis: number = 0;
+        document.getElementById("zusammenfassungDarreichungsform").innerHTML = "";
+        document.getElementById("zusammenfassungKugelgroesse").innerHTML = "";
+        document.getElementById("zusammenfassungSorte").innerHTML = "";
+        document.getElementById("zusammenfassungZusätze").innerHTML = "";
+        document.getElementById("zusammenfassungVersandart").innerHTML = "";
+        document.getElementById("zusammenfassungPreis").innerHTML = "Preis: ";
+        for (let i: number = 0; i < Felder.length; i++) {
+            if (Felder[i].checked == true) {
+                preis = Number(Felder[i].value);
+                anzahl += preis;
+                console.log(anzahl);
+                if (Felder[i].name == "Checkbox1" || Felder[i].name == "Checkbox2" || Felder[i].name == "Checkbox3" || Felder[i].name == "Checkbox4") {
+                    let ziel = document.createElement("ul");
+                    ziel.innerHTML = `${Felder[i].id}, `;
+                    document.getElementById("zusammenfassungZusätze").appendChild(ziel);
+                } else if (Felder[i].name == "Radiogroup1") {
+                    let ziel = document.createElement("ul");
+                    ziel.innerHTML = `${Felder[i].id}`;
+                    document.getElementById("zusammenfassungDarreichungsform").appendChild(ziel);
+                } else if (Felder[i].name == "Radiogroup2") {
+                    let ziel = document.createElement("ul");
+                    ziel.innerHTML = `${Felder[i].id}`;
+                    document.getElementById("zusammenfassungKugelgroesse").appendChild(ziel);
+                } else if (Felder[i].name == "Radiogroup3") {
+                    let ziel = document.createElement("ul");
+                    ziel.innerHTML = `${Felder[i].id}`;
+                    document.getElementById("zusammenfassungVersandart").appendChild(ziel);
+                }
+            }
+            if ((Felder[i].name == "StepperCookie" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperErdbeere" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperHaselnuss" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperJoghurt" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperLatteMacchiato" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperMango" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperMaracuja" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperSchokolade" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperStracciatella" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperVanille" && Number(Felder[i].value) > 0)) {
+                preis = Number(Felder[i].value);
+                anzahl += preis;
+                console.log(anzahl);
+                let ziel = document.createElement("ul");
+                ziel.innerHTML = `${Felder[i].value} Kugeln ${Felder[i].name}, `;
+                document.getElementById("zusammenfassungSorte").appendChild(ziel);
+            }
+            document.getElementById("zusammenfassungPreis").innerHTML = `Preis: ${anzahl} €`;
         }
-        if (target.name == "Stepper") {
-            let meter: HTMLMeterElement = <HTMLMeterElement>document.getElementsByTagName("meter")[0];
-            meter.value = parseFloat(target.value);
+
+    }
+
+    function auftragUeberpruefen(): void {
+        let Felder: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+        console.log("bestellübersicht");
+        let fehlt: string = "";
+        let eissorte: number = 0;
+        let versandart: number = 0;
+        let lieferadresse: number = 0;
+        for (let i: number = 0; i < 8; i++) {
+            if (Number(Felder[i].value) > 0) {
+                eissorte = 1;
+                console.log(eissorte);
+            }
+        }
+        if (eissorte == 0) {
+            fehlt += "Sorte, ";
+        }
+        if (Felder[11].checked == false && Felder[12].checked == false) {
+            fehlt += "Darreichungsform, ";
+            console.log(Felder[5].checked);
+            console.log(Felder[6].checked);
+        }
+        for (let i: number = 13; i < 16; i++) {
+            if (Felder[i].checked == true) {
+                versandart = 1;
+            }
+        }
+        if (versandart == 0) {
+            fehlt += "Versandart, ";
+        }
+        for (let i: number = 16; i < 20; i++) {
+            if (Felder[i].value == "") {
+                lieferadresse++;
+            }
+        }
+        if (lieferadresse > 0) {
+            fehlt += "Lieferadresse, ";
+        }
+        if (fehlt == "") {
+            alert("Vielen Dank führ Ihren Einkauf!")
+        } else {
+            alert("Folgende Angabe fehlt: " + fehlt);
         }
     }
 }
