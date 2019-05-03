@@ -1,16 +1,35 @@
-/*
-Aufgabe: Aufgabe 5
-Name: Johannes Rümenapp
-Matrikel: 261175
-Datum: 27.04.2019
-
-Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-*/
 var A5;
 (function (A5) {
-    A5.darreichungsform = [{ name: "Waffel", preis: 0 }, { name: "Becher", preis: 0 }];
-    A5.eissorte = [{ name: "Cookie", preis: 1.50 }, { name: "Erdbeere", preis: 1.50 }, { name: "Joghurt", preis: 1.50 }, { name: "Latte Macchiato", preis: 1.50 }, { name: "Mango", preis: 1.50 }, { name: "Maracuja", preis: 1.50 }, { name: "Schokolade", preis: 1.50 }, { name: "Stracciatella", preis: 1.50 }, { name: "Vanille", preis: 1.50 }, { name: "Zitrone", preis: 1.50 }];
-    A5.extras = [{ name: "Sahne", preis: 0.20 }, { name: "Erdbeersoße", preis: 0.20 }, { name: "Schockosoße", preis: 0.20 }, { name: "Sträusel", preis: 0.20 }];
-    A5.versandart = [{ name: "Standardversand", preis: 0.20 }, { name: "Expressversand", preis: 0.20 }];
+    /**
+     * Arrays welche Produkte enthalten
+     */
+    A5.data = {
+        "Darreichungsform": [
+            { type: "radio", name: "darreichungsform", value: "0", id: "Waffel" },
+            { type: "radio", name: "darreichungsform", value: "0", id: "Becher" }
+        ],
+        "Eissorten": [
+            { type: "number", name: "Eissorten", value: "1.5", id: "Cookie" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Erdbeere" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Joghurt" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Latte Macchiato" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Mango" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Maracuja" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Schokolade" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Stracciatella" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Vanille" },
+            { type: "number", name: "Eissorten", value: "1.5", id: "Zitrone" }
+        ],
+        "Extras": [
+            { type: "checkbox", name: "Extras", value: "0.5", id: "Sahne" },
+            { type: "checkbox", name: "Extras", value: "0.5", id: "Erdbeersoße" },
+            { type: "checkbox", name: "Extras", value: "0.5", id: "Schockosoße" },
+            { type: "checkbox", name: "Extras", value: "0.5", id: "Sträusel" }
+        ],
+        "Versandart": [
+            { type: "radio", name: "versandart", value: "1", id: "Standardversand" },
+            { type: "radio", name: "versandart", value: "1.5", id: "Expressversand" }
+        ],
+    };
 })(A5 || (A5 = {}));
 //# sourceMappingURL=data.js.map

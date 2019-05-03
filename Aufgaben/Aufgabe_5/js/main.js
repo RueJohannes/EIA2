@@ -6,147 +6,179 @@ Datum: 27.04.2019
 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
-var Aufgabe5;
-(function (Aufgabe5) {
-    document.addEventListener("DOMContentLoaded", writeHTML);
-    document.addEventListener("DOMContentLoaded", init);
-    let preisDarreichungsform = 0;
-    let preisSorte = 0;
-    let preisExtras = 0;
-    let preisVersandart = 0;
-    let adresse = "";
-    function writeHTML() {
-        let node = document.getElementById("fieldset");
-        let childNodeHTML;
-        childNodeHTML += "<h3>Darreichungsform</h3>";
-        for (let i = 0; i < darreichungsform.length; i++) {
-            childNodeHTML += "<input type='radio' name='Radiogroup1' value='radio1' + i + darreichungsform[i].name + ";
-            " + darreichungsform[i].preis + ";
-            Euro;
-            '  id=';
-            radio;
-            " + i + ";
-            ' />";;
-            childNodeHTML += "<label for='check" + i + "'>" + darreichungsform[i].name;
-        }
-        childNodeHTML += "<h3>Sorte</h3>";
-        for (let i = 0; i < eissorte.length; i++) {
-            childNodeHTML += eissorte[i].name;
-            childNodeHTML += " <input type='stepper' id='eissorte" + i + "' name='Eissorte' step='1' min='0' max='5' value='0' title='" + eissorte[i].name + "' price='" + eissorte[i].price + "' />";
-            childNodeHTML += "<br>";
-            continue;
-        }
-        childNodeHTML += "<h3>Extras</h3>";
-        for (let i = 0; i < extras.length; i++) {
-            childNodeHTML += extras[i].name;
-            childNodeHTML += " <input type='stepper' id='Extras" + i + "' name='Extras' step='1' min='0' max='5' value='0' title='" + extras[i].name + "' price=" + extras[i].price + " />";
-            childNodeHTML += "<br>";
-            continue;
+var A5;
+(function (A5) {
+    //Wenn die Seite lädt wird die Funktion init aufgerufen
+    window.addEventListener("load", init);
+    /**
+     * Funktion seiteGenerieren wird mit dem Parameter data von data.ts aufgerufen
+     */
+    function init() {
+        seiteGenerieren(A5.data);
+        let fieldsets = document.getElementsByTagName("fieldset");
+        for (let i = 0; i < fieldsets.length; i++) {
+            let fieldset = fieldsets[i];
+            fieldset.addEventListener("change", handleChange);
+            document.getElementById("button").addEventListener("click", bestellungPruefen);
         }
     }
-})(Aufgabe5 || (Aufgabe5 = {}));
-/*
-window.addEventListener("load", init);
-
-function init(_event: Event): void {
-    console.log("Init");
-    let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-    for (let i: number = 0; i < fieldsets.length; i++) {
-        let fieldset: HTMLFieldSetElement = fieldsets[i];
-        console.log(fieldset)
-        fieldset.addEventListener("change", handleChange);
-        document.getElementById("bestellübersicht").addEventListener("click", auftragUeberpruefen);
-    }
-}
-
-function handleChange(_event: Event): void {
-    let Felder: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-    let anzahl: number = 0;
-    let preis: number = 0;
-    document.getElementById("zusammenfassungDarreichungsform").innerHTML = "";
-    document.getElementById("zusammenfassungKugelgroesse").innerHTML = "";
-    document.getElementById("zusammenfassungSorte").innerHTML = "";
-    document.getElementById("zusammenfassungZusätze").innerHTML = "";
-    document.getElementById("zusammenfassungVersandart").innerHTML = "";
-    document.getElementById("zusammenfassungPreis").innerHTML = "Preis: ";
-    for (let i: number = 0; i < Felder.length; i++) {
-        if (Felder[i].checked == true) {
-            preis = Number(Felder[i].value);
-            anzahl += preis;
-            console.log(anzahl);
-            if (Felder[i].name == "Checkbox1" || Felder[i].name == "Checkbox2" || Felder[i].name == "Checkbox3" || Felder[i].name == "Checkbox4") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}, `;
-                document.getElementById("zusammenfassungZusätze").appendChild(ziel);
-            } else if (Felder[i].name == "Radiogroup1") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}`;
-                document.getElementById("zusammenfassungDarreichungsform").appendChild(ziel);
-            } else if (Felder[i].name == "Radiogroup2") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}`;
-                document.getElementById("zusammenfassungKugelgroesse").appendChild(ziel);
-            } else if (Felder[i].name == "Radiogroup3") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}`;
-                document.getElementById("zusammenfassungVersandart").appendChild(ziel);
+    let fieldset = document.createElement("fieldset");
+    let legend = document.createElement("legend");
+    /**
+     *
+     * @param _data mein Datensatz an Produktkategorien
+     * @var kategoriePos Position/Name des Arrays welches Produkte der Produktkategorien enthält
+     * @var value ist ein Array aus Produkten vom Array _data an der Position kategoriePos
+     * @var div wird erstellt und an fieldset angehangen
+     * div wird Text zugewiesen (kategoriePos)
+     *
+     */
+    function seiteGenerieren(_data) {
+        document.getElementById("inhalt").appendChild(fieldset);
+        fieldset.appendChild(legend);
+        legend.innerText = "Auswahl";
+        // das gleiche wie for(let i = 0; i < _data.length; i++){}
+        for (let kategoriePos in _data) {
+            let value = _data[kategoriePos];
+            let div = document.createElement("div");
+            fieldset.appendChild(div);
+            div.innerText = kategoriePos;
+            //für jedes productPos in Value(=eine Produktkategorie) wird die function seiteAnzeigen aufgerufen
+            for (let productsPos in value) {
+                seiteAnzeigen(value[productsPos]);
             }
         }
-        if ((Felder[i].name == "StepperCookie" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperErdbeere" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperHaselnuss" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperJoghurt" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperLatteMacchiato" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperMango" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperMaracuja" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperSchokolade" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperStracciatella" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperVanille" && Number(Felder[i].value) > 0)) {
-            preis = Number(Felder[i].value);
-            anzahl += preis;
-            console.log(anzahl);
-            let ziel = document.createElement("ul");
-            ziel.innerHTML = `${Felder[i].value} Kugeln ${Felder[i].name}, `;
-            document.getElementById("zusammenfassungSorte").appendChild(ziel);
+    }
+    /**
+     * @param _product ist ein übergebenes Produkt
+     * Für Produkte des Types number, checkbox radio werden die jeweiligen Elemente erstellt und Atribute gesetzt
+     */
+    function seiteAnzeigen(_product) {
+        if (_product.type == "number") {
+            let input = document.createElement("input");
+            fieldset.appendChild(input);
+            input.before(_product.id);
+            input.setAttribute("name", _product.id);
+            input.setAttribute("type", _product.type);
+            input.setAttribute("id", _product.id);
+            input.setAttribute("value", "0");
+            input.setAttribute("step", "1");
+            input.setAttribute("max", "5");
+            input.setAttribute("min", "0");
+            input.setAttribute("preis", _product.value);
         }
-        document.getElementById("zusammenfassungPreis").innerHTML = `Preis: ${anzahl} €`;
-    }
-
-}
-
-function auftragUeberpruefen(): void {
-    let Felder: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-    console.log("bestellübersicht");
-    let fehlt: string = "";
-    let eissorte: number = 0;
-    let versandart: number = 0;
-    let lieferadresse: number = 0;
-    for (let i: number = 0; i < 8; i++) {
-        if (Number(Felder[i].value) > 0) {
-            eissorte = 1;
-            console.log(eissorte);
+        else if (_product.type == "checkbox") {
+            let input = document.createElement("input");
+            let label = document.createElement("label");
+            fieldset.appendChild(input);
+            fieldset.appendChild(label);
+            label.innerText = _product.id;
+            label.setAttribute("for", _product.id);
+            input.setAttribute("type", _product.type);
+            input.setAttribute("id", _product.id);
+            input.setAttribute("name", _product.id);
+            input.setAttribute("preis", _product.value);
+        }
+        else if (_product.type == "radio") {
+            let input = document.createElement("input");
+            let label = document.createElement("label");
+            fieldset.appendChild(input);
+            fieldset.appendChild(label);
+            label.innerText = _product.id;
+            label.setAttribute("for", _product.id);
+            input.setAttribute("type", _product.type);
+            input.setAttribute("id", _product.id);
+            input.setAttribute("name", _product.name);
+            input.setAttribute("preis", _product.value);
+        }
+        else {
+            console.log("Der Produkttyp ist ungültig!");
         }
     }
-    if (eissorte == 0) {
-        fehlt += "Sorte, ";
-    }
-    if (Felder[11].checked == false && Felder[12].checked == false) {
-        fehlt += "Darreichungsform, ";
-        console.log(Felder[5].checked);
-        console.log(Felder[6].checked);
-    }
-    for (let i: number = 13; i < 16; i++) {
-        if (Felder[i].checked == true) {
-            versandart = 1;
+    /**
+     *
+     */
+    function handleChange() {
+        let allBoxes = document.getElementsByTagName("input");
+        let sum = 0;
+        document.getElementById("extras2").innerHTML = "";
+        document.getElementById("darreichungsform2").innerHTML = "";
+        document.getElementById("versandart2").innerHTML = "";
+        document.getElementById("eissorte2").innerHTML = "";
+        for (let i = 0; i < allBoxes.length; i++) {
+            if (allBoxes[i].checked == true) {
+                sum += Number(allBoxes[i].getAttribute("preis"));
+                if (allBoxes[i].type == "checkbox") {
+                    let ziel = document.createElement("li");
+                    ziel.innerHTML = `${allBoxes[i].id} `;
+                    document.getElementById("extras2").appendChild(ziel);
+                }
+                else if (allBoxes[i].name == "darreichungsform") {
+                    let ziel = document.createElement("li");
+                    ziel.innerHTML = `${allBoxes[i].id}`;
+                    document.getElementById("darreichungsform2").appendChild(ziel);
+                }
+                else if (allBoxes[i].name == "versandart") {
+                    let ziel = document.createElement("li");
+                    ziel.innerHTML = `${allBoxes[i].id}`;
+                    document.getElementById("versandart2").appendChild(ziel);
+                }
+            }
+            if (allBoxes[i].type == "number" && Number(allBoxes[i].value) > 0) {
+                sum += (Number(allBoxes[i].getAttribute("preis")) * Number(allBoxes[i].value));
+                let ziel = document.createElement("li");
+                ziel.innerHTML = `${allBoxes[i].value}x ${allBoxes[i].name} `;
+                document.getElementById("eissorte2").appendChild(ziel);
+            }
+            document.getElementById("preis1").innerHTML = `Preis:   ${sum} €`;
         }
     }
-    if (versandart == 0) {
-        fehlt += "Versandart, ";
-    }
-    for (let i: number = 16; i < 20; i++) {
-        if (Felder[i].value == "") {
-            lieferadresse++;
+    function bestellungPruefen() {
+        let allBoxes = document.getElementsByTagName("input");
+        let fehlend = "";
+        let darreichungsformUeberprueft = false;
+        let eissorteUeberprueft = false;
+        let versandartUeberprueft = false;
+        let adresseUeberprueft = true;
+        for (let i = 0; i < allBoxes.length; i++) {
+            if (allBoxes[i].type == "text")
+                if (allBoxes[i].value == "") {
+                    adresseUeberprueft = false;
+                }
+            if (allBoxes[i].type == "number") {
+                if (Number(allBoxes[i].value) > 0) {
+                    eissorteUeberprueft = true;
+                }
+            }
+            if (allBoxes[i].name == "darreichungsform") {
+                if (allBoxes[i].checked == true) {
+                    darreichungsformUeberprueft = true;
+                }
+            }
+            if (allBoxes[i].name == "versandart") {
+                if (allBoxes[i].checked == true) {
+                    versandartUeberprueft = true;
+                }
+            }
+        }
+        if (darreichungsformUeberprueft == false) {
+            fehlend += "Darreichungsform, ";
+        }
+        if (eissorteUeberprueft == false) {
+            fehlend += "Eissorte, ";
+        }
+        if (versandartUeberprueft == false) {
+            fehlend += "Versandart, ";
+        }
+        if (adresseUeberprueft == false) {
+            fehlend += "Adressdaten, ";
+        }
+        if (fehlend == "") {
+            alert("Die Bestellung ist bei uns erfolgreich eingegangen. Vielen Dank!");
+        }
+        else {
+            alert("Biite füllen Sie folgende Felder aus: " + fehlend);
         }
     }
-    if (lieferadresse > 0) {
-        fehlt += "Lieferadresse, ";
-    }
-    if (fehlt == "") {
-        alert("Vielen Dank führ Ihren Einkauf!")
-    } else {
-        alert("Folgende Angabe fehlt: " + fehlt);
-    }
-}
-} 
+})(A5 || (A5 = {}));
 //# sourceMappingURL=main.js.map
