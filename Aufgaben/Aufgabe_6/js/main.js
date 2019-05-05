@@ -6,15 +6,15 @@ Datum: 27.04.2019
 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
-var A5;
-(function (A5) {
+var A6;
+(function (A6) {
     //Wenn die Seite lädt wird die Funktion init aufgerufen
     window.addEventListener("load", init);
     /**
      * Funktion seiteGenerieren wird mit dem Parameter data von data.ts aufgerufen
      */
     function init() {
-        seiteGenerieren(A5.data);
+        seiteGenerieren(A6.data);
         let fieldsets = document.getElementsByTagName("fieldset");
         for (let i = 0; i < fieldsets.length; i++) {
             let fieldset = fieldsets[i];
@@ -180,5 +180,5 @@ var A5;
             alert("Biite füllen Sie folgende Felder aus: " + fehlend);
         }
     }
-})(A5 || (A5 = {}));
+})(A6 || (A6 = {}));
 //# sourceMappingURL=main.js.map

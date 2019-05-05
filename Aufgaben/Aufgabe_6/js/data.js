@@ -1,9 +1,9 @@
-var A5;
-(function (A5) {
+var A6;
+(function (A6) {
     /**
      * Arrays welche Produkte enthalten
      */
-    A5.data = {
+    A6.data = {
         "Darreichungsform": [
             { type: "radio", name: "darreichungsform", value: "0", id: "Waffel" },
             { type: "radio", name: "darreichungsform", value: "0", id: "Becher" }
@@ -31,5 +31,5 @@ var A5;
             { type: "radio", name: "versandart", value: "1.5", id: "Expressversand" }
         ],
     };
-})(A5 || (A5 = {}));
+})(A6 || (A6 = {}));
 //# sourceMappingURL=data.js.map

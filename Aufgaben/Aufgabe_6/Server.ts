@@ -15,13 +15,13 @@ namespace L05_Server { //Code wird durch namespace gruppiert
 		console.log("Listening"); //Auf der Console wird "Listening" ausgegeben
 	}
 
-	function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { // Funktion handleRequest vom Typ void wird durch die Parametern request und _response vom Typ Http.IncomingMessage und Http.ServerResponse dafür verantwortlich Anfragen anzunehmen und darauf zu reagieren
+	function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { // Funktion handleRequest vom Typ void wird durch die Parametern request und _response vom Typ Http.IncomingMessage und Http.ServerResponse dafür verantwortlich Anfragen anzunehmen und darauf zu antworten
 		console.log(_request.url); //Auf der Console wird "I hear voices!" ausgegeben
 
 		_response.setHeader("content-type", "text/html; charset=utf-8"); //Der Inhalt ("content-type", "text/html; charset=utf-8") wird bei _response im Header hinzugefügt
 		_response.setHeader("Access-Control-Allow-Origin", "*"); //Der Inhalt ("Access-Control-Allow-Origin", "*") wird bei _response im Header hinzugefügt
 
-		_response.write(_request.url); //der Inhalt wird an die URL gesendet
+		_response.write(_request.url); //der Inhalt der URL wird auf die Seite geschrieben
 
 		_response.end(); //_response wird beendet
 	}
