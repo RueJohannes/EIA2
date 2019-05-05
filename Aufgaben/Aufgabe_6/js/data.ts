@@ -1,4 +1,4 @@
-namespace A5 {
+namespace A6 {
 
     /** For interface Products
      *  beschreibt Details eines Produkts

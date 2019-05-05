@@ -11,15 +11,15 @@ var A5;
     //Wenn die Seite lädt wird die Funktion init aufgerufen
     window.addEventListener("load", init);
     /**
-     * Funktion generateSite wird mit dem Parameter data von data.ts aufgerufen
+     * Funktion seiteGenerieren wird mit dem Parameter data von data.ts aufgerufen
      */
     function init() {
-        generateSite(A5.data);
+        seiteGenerieren(A5.data);
         let fieldsets = document.getElementsByTagName("fieldset");
         for (let i = 0; i < fieldsets.length; i++) {
             let fieldset = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
-            document.getElementById("button").addEventListener("click", bestellungPrüfen);
+            document.getElementById("button").addEventListener("click", bestellungPruefen);
         }
     }
     let fieldset = document.createElement("fieldset");
@@ -33,7 +33,7 @@ var A5;
      * div wird Text zugewiesen (kategoriePos)
      *
      */
-    function generateSite(_data) {
+    function seiteGenerieren(_data) {
         document.getElementById("inhalt").appendChild(fieldset);
         fieldset.appendChild(legend);
         legend.innerText = "Auswahl";
@@ -43,9 +43,9 @@ var A5;
             let div = document.createElement("div");
             fieldset.appendChild(div);
             div.innerText = kategoriePos;
-            //für jedes productPos in Value(=eine Produktkategorie) wird die function displaySite aufgerufen
+            //für jedes productPos in Value(=eine Produktkategorie) wird die function seiteAnzeigen aufgerufen
             for (let productsPos in value) {
-                displaySite(value[productsPos]);
+                seiteAnzeigen(value[productsPos]);
             }
         }
     }
@@ -53,7 +53,7 @@ var A5;
      * @param _product ist ein übergebenes Produkt
      * Für Produkte des Types number, checkbox radio werden die jeweiligen Elemente erstellt und Atribute gesetzt
      */
-    function displaySite(_product) {
+    function seiteAnzeigen(_product) {
         if (_product.type == "number") {
             let input = document.createElement("input");
             fieldset.appendChild(input);
@@ -110,7 +110,7 @@ var A5;
                 sum += Number(allBoxes[i].getAttribute("preis"));
                 if (allBoxes[i].type == "checkbox") {
                     let ziel = document.createElement("li");
-                    ziel.innerHTML = `${allBoxes[i].id}, `;
+                    ziel.innerHTML = `${allBoxes[i].id} `;
                     document.getElementById("extras2").appendChild(ziel);
                 }
                 else if (allBoxes[i].name == "darreichungsform") {
@@ -127,163 +127,58 @@ var A5;
             if (allBoxes[i].type == "number" && Number(allBoxes[i].value) > 0) {
                 sum += (Number(allBoxes[i].getAttribute("preis")) * Number(allBoxes[i].value));
                 let ziel = document.createElement("li");
-                ziel.innerHTML = `${allBoxes[i].value}x ${allBoxes[i].name}, `;
+                ziel.innerHTML = `${allBoxes[i].value}x ${allBoxes[i].name} `;
                 document.getElementById("eissorte2").appendChild(ziel);
             }
-            document.getElementById("preis").innerHTML = `Preis:   ${sum} €`;
+            document.getElementById("preis1").innerHTML = `Preis:   ${sum} €`;
         }
     }
-    function bestellungPrüfen() {
+    function bestellungPruefen() {
         let allBoxes = document.getElementsByTagName("input");
-        let missing = "";
-        let eischecked = false;
-        let versandartchecked = false;
-        let adchecked = true;
-        let darreichungsformchecked = false;
+        let fehlend = "";
+        let darreichungsformUeberprueft = false;
+        let eissorteUeberprueft = false;
+        let versandartUeberprueft = false;
+        let adresseUeberprueft = true;
         for (let i = 0; i < allBoxes.length; i++) {
             if (allBoxes[i].type == "text")
                 if (allBoxes[i].value == "") {
-                    adchecked = false;
+                    adresseUeberprueft = false;
                 }
             if (allBoxes[i].type == "number") {
                 if (Number(allBoxes[i].value) > 0) {
-                    eischecked = true;
+                    eissorteUeberprueft = true;
                 }
             }
             if (allBoxes[i].name == "darreichungsform") {
                 if (allBoxes[i].checked == true) {
-                    darreichungsformchecked = true;
+                    darreichungsformUeberprueft = true;
                 }
             }
             if (allBoxes[i].name == "versandart") {
                 if (allBoxes[i].checked == true) {
-                    versandartchecked = true;
+                    versandartUeberprueft = true;
                 }
             }
         }
-        if (darreichungsformchecked == false) {
-            missing += "Darreichungsform, ";
+        if (darreichungsformUeberprueft == false) {
+            fehlend += "Darreichungsform, ";
         }
-        if (eischecked == false) {
-            missing += "Eissorte, ";
+        if (eissorteUeberprueft == false) {
+            fehlend += "Eissorte, ";
         }
-        if (versandartchecked == false) {
-            missing += "Versandart, ";
+        if (versandartUeberprueft == false) {
+            fehlend += "Versandart, ";
         }
-        if (adchecked == false) {
-            missing += "Adressdaten, ";
+        if (adresseUeberprueft == false) {
+            fehlend += "Adressdaten, ";
         }
-        if (missing == "") {
-            alert("Die Bestellung ist bei uns erfolgreich eingegangen, vielen Dank");
+        if (fehlend == "") {
+            alert("Die Bestellung ist bei uns erfolgreich eingegangen. Vielen Dank!");
         }
         else {
-            alert("Folgende Angabe(n) fehlt: " + missing);
+            alert("Biite füllen Sie folgende Felder aus: " + fehlend);
         }
     }
 })(A5 || (A5 = {}));
-/*
-window.addEventListener("load", init);
-
-function init(_event: Event): void {
-    console.log("Init");
-    let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-    for (let i: number = 0; i < fieldsets.length; i++) {
-        let fieldset: HTMLFieldSetElement = fieldsets[i];
-        console.log(fieldset)
-        fieldset.addEventListener("change", handleChange);
-        document.getElementById("bestellübersicht").addEventListener("click", auftragUeberpruefen);
-    }
-}
-
-function handleChange(_event: Event): void {
-    let Felder: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-    let anzahl: number = 0;
-    let preis: number = 0;
-    document.getElementById("zusammenfassungDarreichungsform").innerHTML = "";
-    document.getElementById("zusammenfassungKugelgroesse").innerHTML = "";
-    document.getElementById("zusammenfassungSorte").innerHTML = "";
-    document.getElementById("zusammenfassungZusätze").innerHTML = "";
-    document.getElementById("zusammenfassungVersandart").innerHTML = "";
-    document.getElementById("zusammenfassungPreis").innerHTML = "Preis: ";
-    for (let i: number = 0; i < Felder.length; i++) {
-        if (Felder[i].checked == true) {
-            preis = Number(Felder[i].value);
-            anzahl += preis;
-            console.log(anzahl);
-            if (Felder[i].name == "Checkbox1" || Felder[i].name == "Checkbox2" || Felder[i].name == "Checkbox3" || Felder[i].name == "Checkbox4") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}, `;
-                document.getElementById("zusammenfassungZusätze").appendChild(ziel);
-            } else if (Felder[i].name == "Radiogroup1") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}`;
-                document.getElementById("zusammenfassungDarreichungsform").appendChild(ziel);
-            } else if (Felder[i].name == "Radiogroup2") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}`;
-                document.getElementById("zusammenfassungKugelgroesse").appendChild(ziel);
-            } else if (Felder[i].name == "Radiogroup3") {
-                let ziel = document.createElement("ul");
-                ziel.innerHTML = `${Felder[i].id}`;
-                document.getElementById("zusammenfassungVersandart").appendChild(ziel);
-            }
-        }
-        if ((Felder[i].name == "StepperCookie" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperErdbeere" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperHaselnuss" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperJoghurt" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperLatteMacchiato" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperMango" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperMaracuja" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperSchokolade" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperStracciatella" && Number(Felder[i].value) > 0) || (Felder[i].name == "StepperVanille" && Number(Felder[i].value) > 0)) {
-            preis = Number(Felder[i].value);
-            anzahl += preis;
-            console.log(anzahl);
-            let ziel = document.createElement("ul");
-            ziel.innerHTML = `${Felder[i].value} Kugeln ${Felder[i].name}, `;
-            document.getElementById("zusammenfassungSorte").appendChild(ziel);
-        }
-        document.getElementById("zusammenfassungPreis").innerHTML = `Preis: ${anzahl} €`;
-    }
-
-}
-
-function auftragUeberpruefen(): void {
-    let Felder: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-    console.log("bestellübersicht");
-    let fehlt: string = "";
-    let eissorte: number = 0;
-    let versandart: number = 0;
-    let lieferadresse: number = 0;
-    for (let i: number = 0; i < 8; i++) {
-        if (Number(Felder[i].value) > 0) {
-            eissorte = 1;
-            console.log(eissorte);
-        }
-    }
-    if (eissorte == 0) {
-        fehlt += "Sorte, ";
-    }
-    if (Felder[11].checked == false && Felder[12].checked == false) {
-        fehlt += "Darreichungsform, ";
-        console.log(Felder[5].checked);
-        console.log(Felder[6].checked);
-    }
-    for (let i: number = 13; i < 16; i++) {
-        if (Felder[i].checked == true) {
-            versandart = 1;
-        }
-    }
-    if (versandart == 0) {
-        fehlt += "Versandart, ";
-    }
-    for (let i: number = 16; i < 20; i++) {
-        if (Felder[i].value == "") {
-            lieferadresse++;
-        }
-    }
-    if (lieferadresse > 0) {
-        fehlt += "Lieferadresse, ";
-    }
-    if (fehlt == "") {
-        alert("Vielen Dank führ Ihren Einkauf!")
-    } else {
-        alert("Folgende Angabe fehlt: " + fehlt);
-    }
-}
-}
-*/ 
 //# sourceMappingURL=main.js.map
