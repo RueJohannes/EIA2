@@ -184,8 +184,8 @@ var A7;
     }
     function generateUrl() {
         let input = document.getElementsByTagName("input");
-        //let url: string = "https://eia2-eisserver.herokuapp.com/?";
-        let url = "http://localhost:8100/?";
+        let url = "https://lassdasmaldenpapamachen.herokuapp.com/?";
+        //let url: string = "http://localhost:8100/?";
         let sum = 0;
         for (let i = 0; i < input.length; i++) {
             //Darreichungsform
