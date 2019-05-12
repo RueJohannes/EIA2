@@ -202,7 +202,6 @@ namespace A7 {
         let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let url: string = "https://lassdasmaldenpapamachen.herokuapp.com/?";
         //let url: string = "http://localhost:8100/?";
-        let sum: number = 0;
         for (let i: number = 0; i < input.length; i++) {
             //Darreichungsform
             if (input[i].name == "Darreichungsform") {
@@ -246,27 +245,3 @@ namespace A7 {
         }
     }
 }
-
-/*
-    function sendRequestWithCustomData(_color: string): void {
-        let xhr: XMLHttpRequest = new XMLHttpRequest();
-        let url: string = "http://localhost:8100";
-        //let url: string = "https://lassdasmaldenpapamachen.herokuapp.com/";
-
-        document.getElementById("serverResponse").innerHTML = "<h2>Diese Bestellung ist bei uns eingegangen:";
-        document.getElementById("serverResponse").innerHTML += (xhr.response);
-        xhr.open("GET", url + "?color=" + _color, true);
-        xhr.addEventListener("readystatechange", handleStateChange);
-        xhr.send();
-    }
-
-    function handleStateChange(_event: ProgressEvent): void {
-        var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
-            console.log("response: " + xhr.response);
-        }
-    }
-
-}
-*/
