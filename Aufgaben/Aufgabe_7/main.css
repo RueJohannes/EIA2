@@ -1,0 +1,26 @@
+/*
+Aufgabe: Aufgabe 4
+Name: Johannes Rümenapp
+Matrikel: 261175
+Datum: 20.04.2019
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+html {
+    font-family: Helvetica, sans-serif;
+    background-color: #3B6EA5;
+}
+/*
+#wahl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+*/
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}

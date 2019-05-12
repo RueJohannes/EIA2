@@ -1,0 +1,69 @@
+<!--
+Aufgabe: Aufgabe 5
+Name: Johannes Rümenapp
+Matrikel: 261175
+Datum: 27.04.2019
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./main.css">
+	<script src="./js/data.js"></script>
+	<script src="./js/main.js"></script>
+	<title>Eis-Dealer</title>
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<h1>Online Eiskonfigurator</h1>
+	</header>
+	<main>
+
+		<!-- 
+		<form action="https://lassdasmaldenpapamachen.herokuapp.com/">
+
+		<form action="index.html" method="get"> 
+		-->
+
+			<div id="inhalt"></div>
+			<div>
+				<fieldset id="adresse">
+					<legend>Adressdaten</legend>
+					<span>Straße <input type="text" name="Text" value="" required /></span>
+					<br>
+					<span>Hausnummer <input type="text" pattern="[0-9]{1,3}" name="number" value="" required /></span>
+					<hr>
+					<span>Stadt <input type="text" name="Text" id="city" required /></span>
+					<br>
+					<span>Postleitzahl <input type="text" pattern="[0-9]{5}" name="number" value="" required /></span>
+				</fieldset>
+				<br>
+				<br>
+				<button id="button">Bestellung Prüfen</button>
+				<button id="button2">Jetzt kaufen</button>
+				<br>
+				<br>
+				<div>
+					<span id="darreichungsform1">Darreichungsform: <a id="darreichungsform2"></a></span><br>
+					<span id="eissorte1">Eissorten: <a id="eissorte2"></a></span><br>
+					<span id="extras1">Extras: <a id="extras2"></a></span><br>
+					<span id="versandart1">Versandart: <a id="versandart2"></a></span><br>
+					<span id="preis1">Preis: <a id="preis2"></a></span><br>
+				</div>
+				<br>
+				<br>
+				<div id="serverantwort"></div>
+			</div>
+	</main>
+
+</body>
+
+</html>
