@@ -201,7 +201,7 @@ namespace A7 {
     function generateUrl(): void {
         let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let url: string = "https://lassdasmaldenpapamachen.herokuapp.com/?";
-        //let url: string = "http://localhost:8100/";
+        //let url: string = "http://localhost:8100/?";
         let sum: number = 0;
         for (let i: number = 0; i < input.length; i++) {
             //Darreichungsform
@@ -213,13 +213,13 @@ namespace A7 {
             //Eissorte
             if (input[i].type == "number") {
                 if (Number(input[i].value) > 0) {
-                    url += `${input[i].id}=${input[i].value}&`;
+                    url += `${input[i].id}=${input[i].value}x&`;
                 }
             }
             //Extras
             if (input[i].type == "checkbox") {
                 if (input[i].checked == true) {
-                    url += `${input[i].name}=${input[i].value}&`;
+                    url += `${input[i].name}=Ausgewählt&`;
                 }
             }
             //Versandart

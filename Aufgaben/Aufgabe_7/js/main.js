@@ -185,7 +185,7 @@ var A7;
     function generateUrl() {
         let input = document.getElementsByTagName("input");
         let url = "https://lassdasmaldenpapamachen.herokuapp.com/?";
-        //let url: string = "http://localhost:8100/";
+        //let url: string = "http://localhost:8100/?";
         let sum = 0;
         for (let i = 0; i < input.length; i++) {
             //Darreichungsform
@@ -197,13 +197,13 @@ var A7;
             //Eissorte
             if (input[i].type == "number") {
                 if (Number(input[i].value) > 0) {
-                    url += `${input[i].id}=${input[i].value}&`;
+                    url += `${input[i].id}=${input[i].value}x&`;
                 }
             }
             //Extras
             if (input[i].type == "checkbox") {
                 if (input[i].checked == true) {
-                    url += `${input[i].name}=${input[i].value}&`;
+                    url += `${input[i].name}=Ausgewählt&`;
                 }
             }
             //Versandart
