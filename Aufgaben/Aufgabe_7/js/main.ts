@@ -201,7 +201,7 @@ namespace A7 {
     function generateUrl(): void {
         let input: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let url: string = "https://lassdasmaldenpapamachen.herokuapp.com/?";
-        //let url: string = "http://localhost:8100/?";
+        //let url: string = "http://localhost:8100/";
         let sum: number = 0;
         for (let i: number = 0; i < input.length; i++) {
             //Darreichungsform
