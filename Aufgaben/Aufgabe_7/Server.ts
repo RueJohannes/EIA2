@@ -24,7 +24,7 @@ namespace L05_Server {
 
 		let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 		for (let key in url.query)
-			_response.write(key + ": " + url.query[key] + "<br/>");
+			_response.write(key + ":%20" + url.query[key] + "<br/>");
 
 		// let jsonString: string = JSON.stringify(url.query);
 		// _response.write(jsonString);
