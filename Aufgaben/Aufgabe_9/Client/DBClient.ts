@@ -1,7 +1,7 @@
 namespace DBClient {
     window.addEventListener("load", init);
     // let serverAddress: string = "http://localhost:8100/";
-    let serverAddress: string = "https://lassdasmaldenpapamachen.herokuapp.com/";
+    let serverAddress: string = "https://lassdasmaldenpapamachen2.herokuapp.com/";
 
     function init(_event: Event): void {
         console.log("Init");
