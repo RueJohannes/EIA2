@@ -6,11 +6,11 @@ namespace A11 {
 
         draw(): void {
             // Luftblasen
-            let luftblaseC: Path2D = new Path2D();
-            luftblaseC.arc(this.x, this.y, 12, 0, 2 * Math.PI);
+            let luftblaseB: Path2D = new Path2D();
+            luftblaseB.arc(this.x + 5, this.y - 30, 7, 0, 2 * Math.PI);
             crc.fillStyle = "lightblue";
-            crc.fill(luftblaseC);
-            crc.stroke(luftblaseC);
+            crc.fill(luftblaseB);
+            crc.stroke(luftblaseB);
         }
 
         update(): void {

@@ -8,11 +8,6 @@ var A11;
             A11.crc.fillStyle = "lightblue";
             A11.crc.fill(luftblaseA);
             A11.crc.stroke(luftblaseA);
-            let luftblaseB = new Path2D();
-            luftblaseB.arc(this.x + 5, this.y - 30, 7, 0, 2 * Math.PI);
-            A11.crc.fillStyle = "lightblue";
-            A11.crc.fill(luftblaseB);
-            A11.crc.stroke(luftblaseB);
         }
         update() {
             this.move();

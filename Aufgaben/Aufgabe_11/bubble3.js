@@ -1,13 +1,13 @@
 var A11;
 (function (A11) {
-    class bubble2A {
+    class bubble3A {
         draw() {
             // Luftblasen
-            let luftblaseB = new Path2D();
-            luftblaseB.arc(this.x + 5, this.y - 30, 7, 0, 2 * Math.PI);
+            let luftblaseC = new Path2D();
+            luftblaseC.arc(this.x, this.y, 12, 0, 2 * Math.PI);
             A11.crc.fillStyle = "lightblue";
-            A11.crc.fill(luftblaseB);
-            A11.crc.stroke(luftblaseB);
+            A11.crc.fill(luftblaseC);
+            A11.crc.stroke(luftblaseC);
         }
         update() {
             this.move();
@@ -20,6 +20,6 @@ var A11;
             }
         }
     }
-    A11.bubble2A = bubble2A;
+    A11.bubble3A = bubble3A;
 })(A11 || (A11 = {}));
-//# sourceMappingURL=bubble2.js.map
+//# sourceMappingURL=bubble3.js.map

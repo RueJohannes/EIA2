@@ -6,6 +6,7 @@ var A11;
     let fish2Array = [];
     let bubble1Array = [];
     let bubble2Array = [];
+    let bubble3Array = [];
     let fps = 30;
     let imageData;
     function init() {
@@ -13,10 +14,10 @@ var A11;
         A11.crc = canvas.getContext("2d");
         drawEnvironment();
         imageData = A11.crc.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 10; i++) {
             let x = Math.random() * canvas.width;
             let y = Math.random() * canvas.height;
-            let dx = Math.random() * 10 - 5;
+            let dx = Math.random() * 2 - 3;
             let fish1;
             fish1 = new A11.fish1A();
             fish1.x = x;
@@ -26,10 +27,10 @@ var A11;
             fish1.draw();
             console.log(fish1);
         }
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 10; i++) {
             let x = Math.random() * canvas.width;
             let y = Math.random() * canvas.height;
-            let dx = Math.random() * 10 - 5;
+            let dx = Math.random() * 2 + 1;
             let fish2;
             fish2 = new A11.fish2A();
             fish2.x = x;
@@ -39,10 +40,10 @@ var A11;
             fish2.draw();
             console.log(fish2);
         }
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 5; i++) {
             let x = Math.random() * canvas.width;
             let y = Math.random() * canvas.height;
-            let dy = Math.random() * 10 - 5;
+            let dy = Math.random() * -1 - 1;
             let bubble1;
             bubble1 = new A11.bubble1A();
             bubble1.x = x;
@@ -52,10 +53,10 @@ var A11;
             bubble1.draw();
             console.log(bubble1);
         }
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 15; i++) {
             let x = Math.random() * canvas.width;
             let y = Math.random() * canvas.height;
-            let dy = Math.random() * 10 - 5;
+            let dy = Math.random() * -1 - 1;
             let bubble2;
             bubble2 = new A11.bubble2A();
             bubble2.x = x;
@@ -64,6 +65,19 @@ var A11;
             bubble2Array.push(bubble2);
             bubble2.draw();
             console.log(bubble2);
+        }
+        for (let i = 0; i < 5; i++) {
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+            let dy = Math.random() * -1 - 1;
+            let bubble3;
+            bubble3 = new A11.bubble3A();
+            bubble3.x = x;
+            bubble3.y = y;
+            bubble3.dy = dy;
+            bubble3Array.push(bubble3);
+            bubble3.draw();
+            console.log(bubble3);
         }
         update();
     }
@@ -82,6 +96,9 @@ var A11;
         }
         for (let i = 0; i < bubble2Array.length; i++) {
             bubble2Array[i].update();
+        }
+        for (let i = 0; i < bubble3Array.length; i++) {
+            bubble3Array[i].update();
         }
     }
     function drawEnvironment() {

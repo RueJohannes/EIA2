@@ -7,6 +7,7 @@ namespace A11 {
 	let fish2Array: fish2A[] = [];
 	let bubble1Array: bubble1A[] = [];
 	let bubble2Array: bubble2A[] = [];
+	let bubble3Array: bubble3A[] = [];
 	let fps: number = 30;
 	let imageData: ImageData;
 
@@ -16,10 +17,10 @@ namespace A11 {
 		drawEnvironment();
 		imageData = crc.getImageData(0, 0, canvas.width, canvas.height);
 
-		for (let i: number = 0; i < 20; i++) {
+		for (let i: number = 0; i < 10; i++) {
 			let x: number = Math.random() * canvas.width;
 			let y: number = Math.random() * canvas.height;
-			let dx: number = Math.random() * 10 - 5;
+			let dx: number = Math.random() * 2 - 3;
 			let fish1: fish1A;
 			fish1 = new fish1A();
 			fish1.x = x;
@@ -29,10 +30,10 @@ namespace A11 {
 			fish1.draw();
 			console.log(fish1);
 		}
-		for (let i: number = 0; i < 20; i++) {
+		for (let i: number = 0; i < 10; i++) {
 			let x: number = Math.random() * canvas.width;
 			let y: number = Math.random() * canvas.height;
-			let dx: number = Math.random() * 10 - 5;
+			let dx: number = Math.random() * 2 + 1;
 			let fish2: fish2A;
 			fish2 = new fish2A();
 			fish2.x = x;
@@ -42,10 +43,10 @@ namespace A11 {
 			fish2.draw();
 			console.log(fish2);
 		}
-		for (let i: number = 0; i < 20; i++) {
+		for (let i: number = 0; i < 5; i++) {
 			let x: number = Math.random() * canvas.width;
 			let y: number = Math.random() * canvas.height;
-			let dy: number = Math.random() * 10 - 5;
+			let dy: number = Math.random() * -1 - 1;
 			let bubble1: bubble1A;
 			bubble1 = new bubble1A();
 			bubble1.x = x;
@@ -55,10 +56,10 @@ namespace A11 {
 			bubble1.draw();
 			console.log(bubble1);
 		}
-		for (let i: number = 0; i < 20; i++) {
+		for (let i: number = 0; i < 15; i++) {
 			let x: number = Math.random() * canvas.width;
 			let y: number = Math.random() * canvas.height;
-			let dy: number = Math.random() * 10 - 5;
+			let dy: number = Math.random() * -1 - 1;
 			let bubble2: bubble2A;
 			bubble2 = new bubble2A();
 			bubble2.x = x;
@@ -67,6 +68,19 @@ namespace A11 {
 			bubble2Array.push(bubble2);
 			bubble2.draw();
 			console.log(bubble2);
+		}
+		for (let i: number = 0; i < 5; i++) {
+			let x: number = Math.random() * canvas.width;
+			let y: number = Math.random() * canvas.height;
+			let dy: number = Math.random() * -1 - 1;
+			let bubble3: bubble3A;
+			bubble3 = new bubble3A();
+			bubble3.x = x;
+			bubble3.y = y;
+			bubble3.dy = dy;
+			bubble3Array.push(bubble3);
+			bubble3.draw();
+			console.log(bubble3);
 		}
 		update();
 	}
@@ -87,6 +101,9 @@ namespace A11 {
 		}
 		for (let i: number = 0; i < bubble2Array.length; i++) {
 			bubble2Array[i].update();
+		}
+		for (let i: number = 0; i < bubble3Array.length; i++) {
+			bubble3Array[i].update();
 		}
 	}
 
