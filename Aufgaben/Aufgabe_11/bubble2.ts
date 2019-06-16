@@ -21,7 +21,7 @@ namespace A11 {
         move(): void {
             this.y += this.dy;
             if (this.y + 100 < 0) {
-                this.y = 700;
+                this.y = 750;
             }
         }
     }

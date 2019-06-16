@@ -35,8 +35,8 @@ namespace A11 {
 
         move(): void {
             this.x += this.dx;
-            if (this.x + 100 < 0) {
-                this.x = 1700;
+            if (this.x - 100 > 1500) {
+                this.x = - 250;
             }
         }
     }

@@ -16,7 +16,7 @@ var A11;
         move() {
             this.y += this.dy;
             if (this.y + 100 < 0) {
-                this.y = 700;
+                this.y = 750;
             }
         }
     }
