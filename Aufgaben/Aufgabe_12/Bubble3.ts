@@ -1,8 +1,10 @@
 namespace A12 {
-    export class Bubble3 {
-        x: number;
-        y: number;
-        dy: number;
+    export class Bubble3 extends Bubble {
+
+        constructor() {
+            super();
+            this.dy = Math.random() * -1 - 1;
+        }
 
         draw(): void {
             // Luftblasen
@@ -11,11 +13,6 @@ namespace A12 {
             crc.fillStyle = "lightblue";
             crc.fill(luftblaseC);
             crc.stroke(luftblaseC);
-        }
-
-        update(): void {
-            this.move();
-            this.draw();
         }
 
         move(): void {

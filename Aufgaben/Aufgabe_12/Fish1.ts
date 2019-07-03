@@ -1,8 +1,10 @@
 namespace A12 {
-	export class Fish1 {
-		x: number;
-		y: number;
-		dx: number;
+    export class Fish1 extends Fish {
+
+        constructor() {
+            super();
+            this.dx = Math.random() * 2 - 3;
+        }
 
 		draw(): void {
 			//Fisch
@@ -32,11 +34,6 @@ namespace A12 {
 			crc.fillStyle = "black";
 			crc.fill(augeInnen);
 			crc.stroke(augeInnen);
-		}
-
-		update(): void {
-			this.move();
-			this.draw();
 		}
 
 		move(): void {

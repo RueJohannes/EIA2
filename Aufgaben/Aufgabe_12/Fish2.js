@@ -3,8 +3,6 @@ var A12;
     class Fish2 extends A12.Fish {
         constructor() {
             super();
-            this.x = Math.random() * A12.canvas.width;
-            this.y = Math.random() * A12.canvas.height;
             this.dx = Math.random() * 2 + 1;
         }
         draw() {
@@ -27,10 +25,6 @@ var A12;
             A12.crc.fillStyle = "black";
             A12.crc.fill(augeInnen);
             A12.crc.stroke(augeInnen);
-        }
-        update() {
-            this.move();
-            this.draw();
         }
         move() {
             this.x += this.dx;

@@ -3,8 +3,6 @@ namespace A12 {
 
         constructor() {
             super();
-			this.x = Math.random() * canvas.width;
-			this.y = Math.random() * canvas.height;
             this.dx = Math.random() * 2 + 1;
         }
 
@@ -30,11 +28,6 @@ namespace A12 {
             crc.fillStyle = "black";
             crc.fill(augeInnen);
             crc.stroke(augeInnen);
-        }
-
-        update(): void {
-            this.move();
-            this.draw();
         }
 
         move(): void {

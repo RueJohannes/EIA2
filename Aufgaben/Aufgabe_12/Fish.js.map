@@ -1,1 +1,1 @@
-{"version":3,"file":"Fish.js","sourceRoot":"","sources":["Fish.ts"],"names":[],"mappings":"AAAA,IAAU,GAAG,CAIZ;AAJD,WAAU,GAAG;IACZ,MAAa,IAAK,SAAQ,IAAA,MAAM;KAE5B;IAFS,QAAI,OAEb,CAAA;AACL,CAAC,EAJS,GAAG,KAAH,GAAG,QAIZ"}
+{"version":3,"file":"Fish.js","sourceRoot":"","sources":["Fish.ts"],"names":[],"mappings":"AAAA,IAAU,GAAG,CAQZ;AARD,WAAU,GAAG;IACZ,MAAa,IAAK,SAAQ,IAAA,MAAM;QAG/B;YACC,KAAK,EAAE,CAAC;QACT,CAAC;KACD;IANY,QAAI,OAMhB,CAAA;AACF,CAAC,EARS,GAAG,KAAH,GAAG,QAQZ"}

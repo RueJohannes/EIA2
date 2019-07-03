@@ -1,11 +1,13 @@
 var A12;
 (function (A12) {
     document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("click", throwFood);
     let fish1Array = [];
     let fish2Array = [];
     let bubble1Array = [];
     let bubble2Array = [];
     let bubble3Array = [];
+    let foodArray = [];
     let fps = 30;
     let imageData;
     function init() {
@@ -14,16 +16,8 @@ var A12;
         drawEnvironment();
         imageData = A12.crc.getImageData(0, 0, A12.canvas.width, A12.canvas.height);
         for (let i = 0; i < 10; i++) {
-            let x = Math.random() * A12.canvas.width;
-            let y = Math.random() * A12.canvas.height;
-            let dx = Math.random() * 2 - 3;
-            let fish1;
-            fish1 = new A12.Fish1();
-            fish1.x = x;
-            fish1.y = y;
-            fish1.dx = dx;
-            fish1Array.push(fish1);
-            fish1.draw();
+            let fish1 = new A12.Fish1();
+            fish2Array.push(fish1);
             console.log(fish1);
         }
         for (let i = 0; i < 10; i++) {
@@ -32,45 +26,26 @@ var A12;
             console.log(fish2);
         }
         for (let i = 0; i < 5; i++) {
-            let x = Math.random() * A12.canvas.width;
-            let y = Math.random() * A12.canvas.height;
-            let dy = Math.random() * -1 - 1;
-            let bubble1;
-            bubble1 = new A12.Bubble1();
-            bubble1.x = x;
-            bubble1.y = y;
-            bubble1.dy = dy;
-            bubble1Array.push(bubble1);
-            bubble1.draw();
+            let bubble1 = new A12.Bubble1();
+            bubble2Array.push(bubble1);
             console.log(bubble1);
         }
         for (let i = 0; i < 15; i++) {
-            let x = Math.random() * A12.canvas.width;
-            let y = Math.random() * A12.canvas.height;
-            let dy = Math.random() * -1 - 1;
-            let bubble2;
-            bubble2 = new A12.Bubble2();
-            bubble2.x = x;
-            bubble2.y = y;
-            bubble2.dy = dy;
+            let bubble2 = new A12.Bubble2();
             bubble2Array.push(bubble2);
-            bubble2.draw();
             console.log(bubble2);
         }
         for (let i = 0; i < 5; i++) {
-            let x = Math.random() * A12.canvas.width;
-            let y = Math.random() * A12.canvas.height;
-            let dy = Math.random() * -1 - 1;
-            let bubble3;
-            bubble3 = new A12.Bubble3();
-            bubble3.x = x;
-            bubble3.y = y;
-            bubble3.dy = dy;
+            let bubble3 = new A12.Bubble3();
             bubble3Array.push(bubble3);
-            bubble3.draw();
             console.log(bubble3);
         }
         update();
+    }
+    function throwFood(_event) {
+        let food = new A12.Food(_event);
+        foodArray.push(food);
+        console.log(food);
     }
     function update() {
         window.setTimeout(update, 1000 / fps);
@@ -90,6 +65,9 @@ var A12;
         }
         for (let i = 0; i < bubble3Array.length; i++) {
             bubble3Array[i].update();
+        }
+        for (let i = 0; i < foodArray.length; i++) {
+            foodArray[i].update();
         }
     }
     function drawEnvironment() {

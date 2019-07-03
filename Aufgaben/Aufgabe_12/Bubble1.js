@@ -1,6 +1,10 @@
 var A12;
 (function (A12) {
-    class Bubble1 {
+    class Bubble1 extends A12.Bubble {
+        constructor() {
+            super();
+            this.dy = Math.random() * -1 - 1;
+        }
         draw() {
             // Luftblasen
             let luftblaseA = new Path2D();
@@ -8,10 +12,6 @@ var A12;
             A12.crc.fillStyle = "lightblue";
             A12.crc.fill(luftblaseA);
             A12.crc.stroke(luftblaseA);
-        }
-        update() {
-            this.move();
-            this.draw();
         }
         move() {
             this.y += this.dy;

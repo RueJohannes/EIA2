@@ -1,6 +1,10 @@
 var A12;
 (function (A12) {
-    class Fish1 {
+    class Fish1 extends A12.Fish {
+        constructor() {
+            super();
+            this.dx = Math.random() * 2 - 3;
+        }
         draw() {
             //Fisch
             let flosse = new Path2D();
@@ -26,10 +30,6 @@ var A12;
             A12.crc.fillStyle = "black";
             A12.crc.fill(augeInnen);
             A12.crc.stroke(augeInnen);
-        }
-        update() {
-            this.move();
-            this.draw();
         }
         move() {
             this.x += this.dx;

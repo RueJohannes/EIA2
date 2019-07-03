@@ -1,6 +1,7 @@
 namespace A12 {
 
 	document.addEventListener("DOMContentLoaded", init);
+	document.addEventListener("click", throwFood);
 	export let crc: CanvasRenderingContext2D;
 	export let canvas: HTMLCanvasElement;
 	let fish1Array: Fish1[] = [];
@@ -8,6 +9,7 @@ namespace A12 {
 	let bubble1Array: Bubble1[] = [];
 	let bubble2Array: Bubble2[] = [];
 	let bubble3Array: Bubble3[] = [];
+	let foodArray: Food[] = [];
 	let fps: number = 30;
 	let imageData: ImageData;
 
@@ -18,16 +20,8 @@ namespace A12 {
 		imageData = crc.getImageData(0, 0, canvas.width, canvas.height);
 
 		for (let i: number = 0; i < 10; i++) {
-			let x: number = Math.random() * canvas.width;
-			let y: number = Math.random() * canvas.height;
-			let dx: number = Math.random() * 2 - 3;
-			let fish1: Fish1;
-			fish1 = new Fish1();
-			fish1.x = x;
-			fish1.y = y;
-			fish1.dx = dx;
-			fish1Array.push(fish1);
-			fish1.draw();
+			let fish1: Fish1 = new Fish1();
+			fish2Array.push(fish1);
 			console.log(fish1);
 		}
 		for (let i: number = 0; i < 10; i++) {
@@ -36,45 +30,27 @@ namespace A12 {
 			console.log(fish2);
 		}
 		for (let i: number = 0; i < 5; i++) {
-			let x: number = Math.random() * canvas.width;
-			let y: number = Math.random() * canvas.height;
-			let dy: number = Math.random() * -1 - 1;
-			let bubble1: Bubble1;
-			bubble1 = new Bubble1();
-			bubble1.x = x;
-			bubble1.y = y;
-			bubble1.dy = dy;
-			bubble1Array.push(bubble1);
-			bubble1.draw();
+			let bubble1: Bubble1 = new Bubble1();
+			bubble2Array.push(bubble1);
 			console.log(bubble1);
 		}
 		for (let i: number = 0; i < 15; i++) {
-			let x: number = Math.random() * canvas.width;
-			let y: number = Math.random() * canvas.height;
-			let dy: number = Math.random() * -1 - 1;
-			let bubble2: Bubble2;
-			bubble2 = new Bubble2();
-			bubble2.x = x;
-			bubble2.y = y;
-			bubble2.dy = dy;
+			let bubble2: Bubble2 = new Bubble2();
 			bubble2Array.push(bubble2);
-			bubble2.draw();
 			console.log(bubble2);
 		}
 		for (let i: number = 0; i < 5; i++) {
-			let x: number = Math.random() * canvas.width;
-			let y: number = Math.random() * canvas.height;
-			let dy: number = Math.random() * -1 - 1;
-			let bubble3: Bubble3;
-			bubble3 = new Bubble3();
-			bubble3.x = x;
-			bubble3.y = y;
-			bubble3.dy = dy;
+			let bubble3: Bubble3 = new Bubble3();
 			bubble3Array.push(bubble3);
-			bubble3.draw();
 			console.log(bubble3);
 		}
 		update();
+	}
+
+	function throwFood(_event: MouseEvent): void {
+		let food: Food = new Food(_event);
+		foodArray.push(food);
+		console.log(food);
 	}
 
 	function update(): void {
@@ -96,6 +72,9 @@ namespace A12 {
 		}
 		for (let i: number = 0; i < bubble3Array.length; i++) {
 			bubble3Array[i].update();
+		}
+		for (let i: number = 0; i < foodArray.length; i++) {
+			foodArray[i].update();
 		}
 	}
 
