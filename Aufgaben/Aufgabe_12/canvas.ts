@@ -5,12 +5,14 @@ namespace A12 {
 	export let crc: CanvasRenderingContext2D;
 	export let canvas: HTMLCanvasElement;
 	let objectArray: Object[] = [];
+	/*
 	let fish1Array: Fish1[] = [];
 	let fish2Array: Fish2[] = [];
 	let bubble1Array: Bubble1[] = [];
 	let bubble2Array: Bubble2[] = [];
 	let bubble3Array: Bubble3[] = [];
 	let foodArray: Food[] = [];
+	*/
 	let fps: number = 30;
 	let imageData: ImageData;
 

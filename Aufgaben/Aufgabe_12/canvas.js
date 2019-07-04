@@ -3,12 +3,14 @@ var A12;
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("click", throwFood);
     let objectArray = [];
-    let fish1Array = [];
-    let fish2Array = [];
-    let bubble1Array = [];
-    let bubble2Array = [];
-    let bubble3Array = [];
-    let foodArray = [];
+    /*
+    let fish1Array: Fish1[] = [];
+    let fish2Array: Fish2[] = [];
+    let bubble1Array: Bubble1[] = [];
+    let bubble2Array: Bubble2[] = [];
+    let bubble3Array: Bubble3[] = [];
+    let foodArray: Food[] = [];
+    */
     let fps = 30;
     let imageData;
     function init() {
