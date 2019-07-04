@@ -2,6 +2,7 @@ var A12;
 (function (A12) {
     document.addEventListener("DOMContentLoaded", init);
     document.addEventListener("click", throwFood);
+    let objectArray = [];
     let fish1Array = [];
     let fish2Array = [];
     let bubble1Array = [];
@@ -17,58 +18,63 @@ var A12;
         imageData = A12.crc.getImageData(0, 0, A12.canvas.width, A12.canvas.height);
         for (let i = 0; i < 10; i++) {
             let fish1 = new A12.Fish1();
-            fish2Array.push(fish1);
+            objectArray.push(fish1);
             console.log(fish1);
         }
         for (let i = 0; i < 10; i++) {
             let fish2 = new A12.Fish2();
-            fish2Array.push(fish2);
+            objectArray.push(fish2);
             console.log(fish2);
         }
         for (let i = 0; i < 5; i++) {
             let bubble1 = new A12.Bubble1();
-            bubble2Array.push(bubble1);
+            objectArray.push(bubble1);
             console.log(bubble1);
         }
         for (let i = 0; i < 15; i++) {
             let bubble2 = new A12.Bubble2();
-            bubble2Array.push(bubble2);
+            objectArray.push(bubble2);
             console.log(bubble2);
         }
         for (let i = 0; i < 5; i++) {
             let bubble3 = new A12.Bubble3();
-            bubble3Array.push(bubble3);
+            objectArray.push(bubble3);
             console.log(bubble3);
         }
         update();
     }
     function throwFood(_event) {
         let food = new A12.Food(_event);
-        foodArray.push(food);
+        objectArray.push(food);
         console.log(food);
     }
     function update() {
         window.setTimeout(update, 1000 / fps);
         A12.crc.clearRect(0, 0, A12.canvas.width, A12.canvas.height);
         A12.crc.putImageData(imageData, 0, 0);
-        for (let i = 0; i < fish1Array.length; i++) {
-            fish1Array[i].update();
+        for (let i = 0; i < objectArray.length; i++) {
+            objectArray[i].update();
         }
-        for (let i = 0; i < fish2Array.length; i++) {
-            fish2Array[i].update();
-        }
-        for (let i = 0; i < bubble1Array.length; i++) {
-            bubble1Array[i].update();
-        }
-        for (let i = 0; i < bubble2Array.length; i++) {
-            bubble2Array[i].update();
-        }
-        for (let i = 0; i < bubble3Array.length; i++) {
-            bubble3Array[i].update();
-        }
-        for (let i = 0; i < foodArray.length; i++) {
-            foodArray[i].update();
-        }
+        /*
+                for (let i: number = 0; i < fish1Array.length; i++) {
+                    fish1Array[i].update();
+                }
+                for (let i: number = 0; i < fish2Array.length; i++) {
+                    fish2Array[i].update();
+                }
+                for (let i: number = 0; i < bubble1Array.length; i++) {
+                    bubble1Array[i].update();
+                }
+                for (let i: number = 0; i < bubble2Array.length; i++) {
+                    bubble2Array[i].update();
+                }
+                for (let i: number = 0; i < bubble3Array.length; i++) {
+                    bubble3Array[i].update();
+                }
+                for (let i: number = 0; i < foodArray.length; i++) {
+                    foodArray[i].update();
+                }
+                */
     }
     function drawEnvironment() {
         // Wasser

@@ -4,6 +4,7 @@ namespace A12 {
 	document.addEventListener("click", throwFood);
 	export let crc: CanvasRenderingContext2D;
 	export let canvas: HTMLCanvasElement;
+	let objectArray: Object[] = [];
 	let fish1Array: Fish1[] = [];
 	let fish2Array: Fish2[] = [];
 	let bubble1Array: Bubble1[] = [];
@@ -21,27 +22,27 @@ namespace A12 {
 
 		for (let i: number = 0; i < 10; i++) {
 			let fish1: Fish1 = new Fish1();
-			fish2Array.push(fish1);
+			objectArray.push(fish1);
 			console.log(fish1);
 		}
 		for (let i: number = 0; i < 10; i++) {
 			let fish2: Fish2 = new Fish2();
-			fish2Array.push(fish2);
+			objectArray.push(fish2);
 			console.log(fish2);
 		}
 		for (let i: number = 0; i < 5; i++) {
 			let bubble1: Bubble1 = new Bubble1();
-			bubble2Array.push(bubble1);
+			objectArray.push(bubble1);
 			console.log(bubble1);
 		}
 		for (let i: number = 0; i < 15; i++) {
 			let bubble2: Bubble2 = new Bubble2();
-			bubble2Array.push(bubble2);
+			objectArray.push(bubble2);
 			console.log(bubble2);
 		}
 		for (let i: number = 0; i < 5; i++) {
 			let bubble3: Bubble3 = new Bubble3();
-			bubble3Array.push(bubble3);
+			objectArray.push(bubble3);
 			console.log(bubble3);
 		}
 		update();
@@ -49,7 +50,7 @@ namespace A12 {
 
 	function throwFood(_event: MouseEvent): void {
 		let food: Food = new Food(_event);
-		foodArray.push(food);
+		objectArray.push(food);
 		console.log(food);
 	}
 
@@ -57,25 +58,30 @@ namespace A12 {
 		window.setTimeout(update, 1000 / fps);
 		crc.clearRect(0, 0, canvas.width, canvas.height);
 		crc.putImageData(imageData, 0, 0);
-
-		for (let i: number = 0; i < fish1Array.length; i++) {
-			fish1Array[i].update();
+		for (let i: number = 0; i < objectArray.length; i++) {
+			objectArray[i].update();
 		}
-		for (let i: number = 0; i < fish2Array.length; i++) {
-			fish2Array[i].update();
-		}
-		for (let i: number = 0; i < bubble1Array.length; i++) {
-			bubble1Array[i].update();
-		}
-		for (let i: number = 0; i < bubble2Array.length; i++) {
-			bubble2Array[i].update();
-		}
-		for (let i: number = 0; i < bubble3Array.length; i++) {
-			bubble3Array[i].update();
-		}
-		for (let i: number = 0; i < foodArray.length; i++) {
-			foodArray[i].update();
-		}
+		
+		/*
+				for (let i: number = 0; i < fish1Array.length; i++) {
+					fish1Array[i].update();
+				}
+				for (let i: number = 0; i < fish2Array.length; i++) {
+					fish2Array[i].update();
+				}
+				for (let i: number = 0; i < bubble1Array.length; i++) {
+					bubble1Array[i].update();
+				}
+				for (let i: number = 0; i < bubble2Array.length; i++) {
+					bubble2Array[i].update();
+				}
+				for (let i: number = 0; i < bubble3Array.length; i++) {
+					bubble3Array[i].update();
+				}
+				for (let i: number = 0; i < foodArray.length; i++) {
+					foodArray[i].update();
+				}
+				*/
 	}
 
 	function drawEnvironment(): void {
